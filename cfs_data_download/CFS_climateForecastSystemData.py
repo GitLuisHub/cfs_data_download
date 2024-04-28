@@ -36,7 +36,9 @@ warnings.simplefilter("ignore")
 # =============================================================================
 # Settign the path variabless
 # =============================================================================
-src_path = Path().resolve()
+# src_path = Path().resolve()
+src_path = Path(__file__).parent.resolve()
+
 
 #############################################################
 # FUNCTIONS
@@ -177,15 +179,15 @@ log = setup_logging()
 @click.command("Downloading data from Climate Forecast System")
 @click.option("--res", 
               default='0p25', 
-              help="The default value is 0p25 for more information look at"
-              "https://climatedataguide.ucar.edu/climate-data/climate-forecast-system-reanalysis-cfsr")
+              help="""The default value is 0p25 for more information look at
+              https://climatedataguide.ucar.edu/climate-data/climate-forecast-system-reanalysis-cfsr""")
 @click.option("--clim_var", 
               default='precipitation', 
-              help="If you need temperature then you need to specified it. Otherwise"
-              "precipitation will be downloaded")
+              help="""If you need temperature then you need to specified it. Otherwise
+              precipitation will be downloaded""")
 @click.option("--bndr", 
-              help="Please enter the name of the boundary file including extension"
-              "i.e. country_adm0.shp")
+              help="""Please enter the name of the boundary file including extension
+              i.e. country_adm0.shp""")
 
 
 def cfs(res, clim_var, bndr):
